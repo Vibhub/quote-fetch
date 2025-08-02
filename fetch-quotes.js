@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import fs from 'fs';
 import path from 'path';
 
-const CATEGORIES = ["Daily", "Wanderlust", "Motivational", "Love", "Happiness", "Positive", "Strength"];
+const CATEGORIES = ["daily", "wanderlust", "motivational", "love", "happiness", "positive", "strength"];
 const BASE_URL = "https://thequoteshub.com/api/tags/";
 const MAX_QUOTES_PER_CATEGORY = 30;
 const PAGE_SIZE = 10;
@@ -31,7 +31,7 @@ function getRandomPages(totalPages, maxQuotesNeeded) {
 }
 
 async function fetchPage(category, page = 1) {
-    const url = `${BASE_URL}${category.toLowerCase()}?page=${page}&page_size=${PAGE_SIZE}`;
+    const url = `${BASE_URL}${category}?page=${page}&page_size=${PAGE_SIZE}`;
     console.log(`🔍 Fetching: ${url}`);
     
     try {
