@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 import fs from 'fs';
 import path from 'path';
 
-const CATEGORIES = ["daily", "motivational", "love", "happiness", "positive", "strength"];
+const CATEGORIES = ["daily", "wanderlust", "motivational", "love", "happiness", "positive", "strength"];
 const BASE_URL = "https://thequoteshub.com/api/tags/";
 const MAX_QUOTES_PER_CATEGORY = 30;
 const PAGE_SIZE = 10;
