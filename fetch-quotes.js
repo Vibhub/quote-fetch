@@ -31,7 +31,7 @@ function getRandomPages(totalPages, maxQuotesNeeded) {
 }
 
 async function fetchPage(category, page = 1) {
-    const url = `${BASE_URL}${category}?page=${page}&page_size=${PAGE_SIZE}`;
+    const url = `${BASE_URL}${category.toLowerCase()}?page=${page}&page_size=${PAGE_SIZE}`;
     console.log(`🔍 Fetching: ${url}`);
     
     try {
