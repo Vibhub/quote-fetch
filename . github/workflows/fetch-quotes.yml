@@ -1,0 +1,32 @@
+name: Fetch Daily Quotes
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Runs at 7:30 AM IST (2:00 UTC)
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Fetch Quotes
+        run: node fetch-quotes.js
+
+      - name: Commit and Push Quotes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daily-quotes/
+          git commit -m "chore: update daily quotes [$(date '+%Y-%m-%d')]" || echo "No changes to commit"
+          git push
